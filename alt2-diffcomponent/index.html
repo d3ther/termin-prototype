@@ -11,20 +11,20 @@
 .hotspot{position:absolute;left:54.5%;top:29.8%;width:15.6%;height:4.3%;border:0;background:transparent;cursor:pointer}
 .backdrop{position:fixed;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;padding:28px;background:#3440546b;opacity:0;visibility:hidden;transition:.3s}
 .backdrop.open{opacity:1;visibility:visible}
-.modal{width:min(1320px,calc(100vw - 56px));min-height:600px;max-height:88vh;display:flex;flex-direction:column;overflow:hidden;background:#fff;border-radius:16px;box-shadow:0 24px 64px #10182847;opacity:0;transform:translateY(10px) scale(.985);transition:.3s var(--e)}
+.modal{width:min(1320px,calc(100vw - 56px));height:600px;min-height:600px;max-height:min(800px,calc(100vh - 56px));display:flex;flex-direction:column;overflow:hidden;background:#fff;border-radius:16px;box-shadow:0 24px 64px #10182847;opacity:0;transform:translateY(10px) scale(.985);transition:height 300ms var(--e),opacity .3s var(--e),transform .3s var(--e)}
 .backdrop.open .modal{opacity:1;transform:none}
 .header{padding:26px 24px 22px;border-bottom:1px solid var(--b)}.header h1{margin:0;font-size:18px}
 .main{flex:1;min-height:0;display:grid;grid-template-columns:280px minmax(0,1fr)}
-.tabs{padding:20px 0;overflow:auto;background:var(--s);border-right:1px solid var(--b)}
-.tabs::before{content:"Lokasi Pengiriman";display:block;padding:0 24px 12px;color:#667085;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
-.tab{position:relative;width:100%;min-height:52px;display:block;margin:0;padding:16px 28px 16px 24px;text-align:left;border:0;border-radius:0;background:transparent;cursor:pointer}
+.tabs{padding:0;overflow:auto;background:var(--s);border-right:1px solid var(--b)}
+.tabs::before{content:"";display:none;padding:0 24px 12px;color:#667085;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.tab{position:relative;width:100%;min-height:52px;display:block;margin:0;padding:24px 24px 24px 12px;text-align:right;line-height:24px;border:0;border-radius:0;background:transparent;cursor:pointer}
 .tab:hover{background:#f2f4f7}
 .tab:focus-visible{outline:2px solid var(--p);outline-offset:-3px}
-.tab::after{content:"";position:absolute;top:10px;right:0;bottom:10px;width:5px;display:none;border-radius:4px 0 0 4px;background:var(--p)}
-.tab.active{background:#fff5f7;box-shadow:none}
+.tab::after{content:"";position:absolute;top:0px;right:0;bottom:0px;width:5px;display:none;border-radius:0;background:var(--p)}
+.tab.active{box-shadow:none}
 .tab.active::after{display:block}
 .tab b{display:block;margin:0;color:var(--t)}
-.tab.active b{color:var(--p);font-weight:700}
+.tab.active p{font-weight:700}
 
 .validation-banner{display:none;align-items:flex-start;gap:12px;margin:0 24px;padding:14px 16px;border:1px solid #f04438;border-left-width:4px;border-radius:4px;background:#fffafa}
 .validation-banner.show{display:flex}
@@ -34,7 +34,7 @@
 .tab.error{box-shadow:inset 3px 0 0 #f04438;background:#fff7f7}
 
 .content{position:relative;min-width:0;overflow:hidden}
-.panel{position:absolute;inset:0;padding:20px 24px;overflow:auto;opacity:0;pointer-events:none;transform:translateY(46px);transition:opacity 420ms ease,transform 420ms var(--e)}
+.panel{position:absolute;inset:0;padding:20px 24px;overflow:visible;opacity:0;pointer-events:none;transform:translateY(46px);transition:opacity 420ms ease,transform 420ms var(--e)}
 .panel.active{opacity:1;pointer-events:auto;transform:none}.panel.exit-down{opacity:0;transform:translateY(58px)}.panel.exit-up{opacity:0;transform:translateY(-58px)}.panel.from-bottom{opacity:0;transform:translateY(58px)}.panel.from-top{opacity:0;transform:translateY(-58px)}
 .summary{display:flex;justify-content:space-between;gap:18px;align-items:center;padding:13px 12px;margin-bottom:16px;border:1px solid var(--b);border-radius:10px;background:var(--s)}.summary b{display:block;margin-bottom:5px}.address{color:var(--m);font-size:13px;line-height:1.45}
 select{min-width:185px;height:42px;padding:0 12px;border:1px solid var(--b);border-radius:8px;background:#fff;color:#98a2b3}
@@ -60,7 +60,7 @@ select{min-width:185px;height:42px;padding:0 12px;border:1px solid var(--b);bord
   display:block;
 }
 
-.tablewrap{max-height:310px;overflow:auto;border:1px solid var(--b);border-radius:10px}table{width:100%;border-collapse:collapse;font-size:13px}th{position:sticky;top:0;z-index:2;padding:13px 16px;text-align:left;background:var(--h)}td{padding:10px 16px;border-top:1px solid var(--b);white-space:nowrap}tbody tr:nth-child(even) td{background:var(--s)}
+.tablewrap{max-height:none;overflow:visible;border:1px solid var(--b);border-radius:10px}table{width:100%;border-collapse:collapse;font-size:13px}th{padding:13px 16px;text-align:left;background:var(--h)}td{padding:10px 16px;border-top:1px solid var(--b);white-space:nowrap}tbody tr:nth-child(even) td{background:var(--s)}
 .total{width:556px;margin:14px 0 0 auto;border:1px solid var(--b);border-radius:10px;overflow:hidden}.tr{display:grid;grid-template-columns:1fr 160px;min-height:36px;align-items:center;padding:0 16px;border-bottom:1px solid var(--b);font-size:13px}.tr:nth-child(odd){background:var(--s)}.tr:last-child{border:0;font-weight:700}.tr b:last-child{text-align:right}
 .footer{display:flex;justify-content:flex-end;gap:16px;padding:16px 24px;border-top:1px solid var(--b)}.btn{min-width:160px;height:40px;border:1px solid var(--b);border-radius:8px;background:#fff;font-weight:600}.primary{background:var(--p);border-color:var(--p);color:#fff}
 @media(max-width:900px){.backdrop{padding:12px}.modal{width:calc(100vw - 24px)}.main{grid-template-columns:1fr}.tabs{display:flex;gap:8px;overflow-x:auto;border-right:0;border-bottom:1px solid var(--b)}.tab{min-width:220px;margin:0}.content{min-height:470px}.total{width:100%}}
@@ -85,17 +85,39 @@ const products=[
 let active=0,busy=false;
 const tabs=document.getElementById("tabs"),content=document.getElementById("content");
 destinations.forEach((d,i)=>{
- tabs.insertAdjacentHTML("beforeend",`<button class="tab ${i===0?"active":""}" data-i="${i}" aria-selected="${i===0}"><b>${d.name}</b></button>`);
+ tabs.insertAdjacentHTML("beforeend",`<button class="tab ${i===0?"active":""}" data-i="${i}" aria-selected="${i===0}"><p>${d.name}</p></button>`);
  const rows=products[i].map((p,n)=>`<tr><td>${p}</td><td>${n%2?5:10} unit</td><td>Instalasi AC × ${n%2?5:10}</td><td>Rp 500.000</td><td>Rp 500.000</td><td>${n%2?"Rp 52.500.000":"Rp 55.500.000"}</td></tr>`).join("");
  content.insertAdjacentHTML("beforeend",`<article class="panel ${i===0?"active":""}" data-i="${i}"><div class="summary"><div><b>${d.name}</b><div class="address">${d.address}</div></div><div class="termin-field"><select class="termin-select" data-i="${i}"><option value="">Pilih termin</option><option value="termin-1">Termin 1</option><option value="termin-2">Termin 2</option></select><span class="termin-error">⚠ Termin harus dipilih</span></div></div><div class="tablewrap"><table><thead><tr><th>Produk</th><th>Jumlah</th><th>Layanan Tambahan</th><th>Service Price</th><th>Pengiriman</th><th>Subtotal</th></tr></thead><tbody>${rows}</tbody></table></div><div class="total"><div class="tr"><b>Total</b><b>Jumlah</b></div><div class="tr"><span>Total Harga Produk (${d.count} Produk)</span><b>Rp 55.500.000</b></div><div class="tr"><span>Total Layanan Tambahan</span><b>Rp 7.500.000</b></div><div class="tr"><span>Total Ongkos Kirim</span><b>Rp 1.000.000</b></div><div class="tr"><span>Total Pesanan</span><b>${d.total}</b></div></div></article>`);
 });
+
+const modalShell=document.querySelector(".modal");
+const modalHeader=document.querySelector(".header");
+const modalFooter=document.querySelector(".footer");
+
+function resizeModalFor(index){
+ const panel=content.querySelector(`.panel[data-i="${index}"]`);
+ const total=panel?.querySelector(".total");
+ if(!panel||!total)return;
+
+ const panelHeight=Math.ceil(total.offsetTop+total.offsetHeight+40);
+ const tabsLastItem=tabs.lastElementChild;
+ const tabsHeight=tabsLastItem?tabsLastItem.offsetTop+tabsLastItem.offsetHeight:0;
+ const bannerHeight=document.getElementById("validationBanner")?.classList.contains("show")
+   ? document.getElementById("validationBanner").offsetHeight
+   : 0;
+ const chromeHeight=modalHeader.offsetHeight+modalFooter.offsetHeight+bannerHeight;
+ const viewportLimit=Math.max(600,window.innerHeight-56);
+ const targetHeight=Math.min(800,viewportLimit,Math.max(600,chromeHeight+Math.max(panelHeight,tabsHeight)));
+ modalShell.style.height=`${targetHeight}px`;
+}
+
 function switchTab(next){
  if(busy||next===active)return; busy=true;
  const current=content.querySelector(`[data-i="${active}"]`), incoming=content.querySelector(`[data-i="${next}"]`), down=next>active;
  document.querySelectorAll(".tab").forEach(x=>{const selected=+x.dataset.i===next;x.classList.toggle("active",selected);x.setAttribute("aria-selected",selected)});
  current.classList.remove("active"); current.classList.add(down?"exit-down":"exit-up");
  incoming.className=`panel ${down?"from-bottom":"from-top"}`; void incoming.offsetWidth;
- setTimeout(()=>{incoming.classList.add("active");incoming.classList.remove(down?"from-bottom":"from-top")},180);
+ setTimeout(()=>{incoming.classList.add("active");incoming.classList.remove(down?"from-bottom":"from-top");resizeModalFor(next)},180);
  setTimeout(()=>{current.classList.remove("exit-down","exit-up");active=next;busy=false},620);
 }
 
@@ -167,6 +189,7 @@ document.getElementById("submitTermin").addEventListener("click",()=>{
     validationMessage.textContent =
       `Anda belum melakukan pengaturan untuk: ${missingDestinationName}.`;
     validationBanner.classList.add("show");
+    requestAnimationFrame(()=>resizeModalFor(targetIndex));
 
     if(targetIndex !== active){
       switchTab(targetIndex);
@@ -198,6 +221,7 @@ document.getElementById("submitTermin").addEventListener("click",()=>{
     validationMessage.textContent =
       `Anda belum melakukan pengaturan untuk: ${missingTerminLabel}.`;
     validationBanner.classList.add("show");
+    requestAnimationFrame(()=>resizeModalFor(active));
 
     // No tab is invalid in this case, so remove field/tab error states.
     selects.forEach(select=>{
@@ -210,11 +234,13 @@ document.getElementById("submitTermin").addEventListener("click",()=>{
   }
 
   validationBanner.classList.remove("show");
+  resizeModalFor(active);
   alert("Termin berhasil diatur untuk seluruh pengiriman.");
 });
 
 document.getElementById("closeValidationBanner").addEventListener("click",()=>{
   validationBanner.classList.remove("show");
+  resizeModalFor(active);
 });
 const backdrop = document.getElementById("backdrop");
 const openButton = document.getElementById("open");
@@ -229,6 +255,7 @@ function openModal() {
   backdrop.classList.add("open");
   backdrop.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
+  requestAnimationFrame(()=>resizeModalFor(active));
 }
 
 function closeModal() {
@@ -248,6 +275,9 @@ document.addEventListener("keydown", event => {
   if (event.key === "Escape" && backdrop.classList.contains("open")) {
     closeModal();
   }
+});
+window.addEventListener("resize",()=>{
+  if(backdrop.classList.contains("open"))resizeModalFor(active);
 });
 </script>
 </body></html>
